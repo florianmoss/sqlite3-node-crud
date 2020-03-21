@@ -53,6 +53,21 @@ $(document).ready(() => {
         });
     });
 
+    $('#deleteButton').click(() => {
+        console.log("deleteButton called.");
+        $.ajax({
+            url: 'deluser',
+            type: 'POST',
+            data: {
+                name: $('#deleteNameBox').val()
+            },
+            success: (data) => {
+                $('#status').html(data.message);
+            }
+        })
+
+    });
+
     // define a generic Ajax error handler:
     // http://api.jquery.com/ajaxerror/
     $(document).ajaxError(() => {

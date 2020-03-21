@@ -61,4 +61,25 @@ router.get('/users/:userid', (req, res) => {
   );
 });
 
+router.post('/deluser', (req, res) => {
+  console.log(req.body);
+
+  db.run(
+    'DELETE FROM users_to_pets WHERE name=$name', {
+      $name: req.body.name,
+    },
+    (err) => {
+      if (err) {
+        res.send({
+          message: 'error in app.post(/deluser)'
+        });
+      } else {
+        res.send({
+          message: 'successfully run app.post(/deluser)'
+        });
+      }
+    }
+  );
+});
+
 module.exports = router;
