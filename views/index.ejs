@@ -16,12 +16,8 @@
 
   Name: <input id="nameBox" type="text" size="20" />
   <button id="readButton">Get profile</button>
+  <button id="deleteButton">Delete Profile</button>
   <button id="allUsersButton">Get all players</button>
-
-  <div id="nameOut"></div>
-  <div id="appOut"></div>
-  <div id="heightOut"></div>
-  <div id="positionOut"></div>
 
   <hr />
   Name: <input id="insertNameBox" type="text" size="20" />
@@ -31,9 +27,15 @@
   <button id="insertButton">Insert into database</button>
 
   <hr />
-  Name: <input id="deleteNameBox" type="text" size="20" />
-  <button id="deleteButton">Delete Profile</button>
-
+  <div id="updateDiv" style="visibility: hidden;">
+    <input id="updateIdBox" type="hidden"/>
+    Name: <input id="updateNameBox" type="text" size="20" />
+    Number of Appearances: <input id="updateAppBox" type="text" size="20" />
+    Height: <input id="updateHeightBox" type="number" size="20" />
+    Position: <input id="updatePosBox" type="text" size="20" />
+    <button id="updateButton">Update entry</button>
+  </div>
+  
   <hr />
   <div id="status"></div>
 </body>
