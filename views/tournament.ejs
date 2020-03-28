@@ -14,7 +14,58 @@
 
 <body>
     <%- include('layouts/header'); -%>
-    <h1>Tournament Page</h1>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Tournament Results</h1>
+            <p class="lead">The latest tournament results are displayed. Results can also be auto generated.</p>
+        </div>
+    </div>
+    <table class="table table-borderless">
+        <tbody>
+            <% data.forEach(function(el) { %>
+            <tr>
+                <td class="align-middle">
+                    <img src="<%= el.homeImage %>" width="200px" class="mx-auto d-block">
+                </td>
+                <td>
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Game #<%= el.id %>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span
+                                            class="badge badge-pill badge-success resultPadding"><%= el.homeResult %></span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="resultPadding centerVs">vs</div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span
+                                            class="badge badge-pill badge-danger resultPadding"><%= el.awayResult %></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <button type="button" id="randomButton" class="btn btn-light">
+                                <span style="font-size: 1.5em; color: rgb(20, 36, 92);">
+                                    <i class="fas fa-random"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </td>
+                <td class="align-middle">
+                    <img src="<%= el.awayImage %>" width="200px" class="mx-auto d-block">
+                </td>
+            </tr>
+            <% }); %>
+
+        </tbody>
+    </table>
     <%- include('layouts/footer'); -%>
 </body>
 
