@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tournament</title>
+
+    <%- include('layouts/cdn'); -%>
+    <script src="/js/lineup.js"></script>
+    <link href="/stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('layouts/header'); -%>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Lineup Management</h1>
+            <p class="lead">The lineup is randomized, please select 'Shuffle' to create a new team combination. If
+                possible, a team will always be filled with at least 5 players.</p>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-2">
+            <h2 class="sub-header">Bench</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+                        <% notPlaying.forEach(function(el) { %>
+                        <tr>
+                            <td class="col-md-1"><%= el.name %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-2 d-flex align-items-center justify-content-center">
+            <button type="button" id="shuffleButton" class="btn btn-light">
+                <span style="font-size: 5em; color: rgb(28, 82, 42);">
+                    <i class="fas fa-random"></i>
+                </span>
+            </button>
+
+
+        </div>
+        <div class="col-2">
+            <h2 class="sub-header">Lineup</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+                        <% playing.forEach(function(el) { %>
+                        <tr>
+                            <td class="col-md-1"><%= el.name %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <%- include('layouts/footer'); -%>
+</body>
+
+</html>
+
+</html>

@@ -104,3 +104,15 @@ section .section-title {
 .navbar-brand {
   color: #ffffff !important;
 }
+
+.my-6 {
+  padding-top: 40px;
+}
+
+.submitButton {
+  background-color: #41f35f;
+}
+
+.deleteButton{
+  background-color: #f05151;
+}

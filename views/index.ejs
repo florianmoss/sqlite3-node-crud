@@ -11,7 +11,6 @@
   <script src="/js/index.js"></script>
   <link href="/stylesheets/style.css" rel="stylesheet">
   <link href="/stylesheets/index.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/45a532c68d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -29,53 +28,17 @@
   <div class="container2">
     <img src="img/court.jpg" alt="netball court" style="width:50%;">
     <div class="bench">
-      <span class="badge badge-pill badge-info p-3 itemOne">Player 6</span>
-      <span class="badge badge-pill badge-info p-3 itemOne">Player 7</span>
-      <span class="badge badge-pill badge-info p-3 itemOne">Player 8</span>
-      <span class="badge badge-pill badge-info p-3 itemOne">Player 9</span>
-      <span class="badge badge-pill badge-info p-3 itemOne">Player 0</span>
+      <% notPlaying.forEach(function(el) { %>
+      <span class="badge badge-pill badge-info p-3"><%= el.name %></span>
+      <% }); %>
     </div>
-    <div class="bottom-left">
-      <span class="badge badge-pill badge-info p-3 itemOne">Player 4</span>
+
+    <% playing.forEach(function(el) { %>
+    <div class="positional">
+      <span class="badge badge-pill badge-info p-3"><%= el.name %></span>
     </div>
-    <div class="top-left">
-      <span class="badge badge-pill badge-info p-3 itemOne">Player 1</span>
-    </div>
-    <div class="top-right">
-      <span class="badge badge-pill badge-info p-3 itemOne">Player 2</span>
-    </div>
-    <div class="bottom-right">
-      <span class="badge badge-pill badge-info p-3 itemOne">Player 5</span>
-    </div>
-    <div class="centered">
-      <span class="badge badge-pill badge-info p-3 itemOne">Player 3</span>
-    </div>
-    <div class="playerInfo">
-      <div class="item1">
-        <div class="card h-100 text-center">
-          <div class="card-block">
-            <h4 class="card-title">Player 1</h4>
-            <h2 class="m-0 mb-2"><i class="align-middle fas fa-basketball-ball"></i></h2>
-          </div>
-          <div class="row no-gutters">
-            <div class="col-6 mt-2 mb-3">
-              <div class="card card-block px-1 border-top-0 border-left-0 border-bottom-0">
-                <h4>203</h4> <small class="text-uppercase">Appearances</small>
-              </div>
-            </div>
-            <div class="col-6 mt-2 mb-3">
-              <div class="card card-block px-1 border-0">
-                <h4>185cm</h4> <small class="text-uppercase text-success">Height</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <% }); %>
   </div>
-
-
-
 
   <div class="container-sm">
     <div class="h1 mb-4 text-center">Player Details</div>

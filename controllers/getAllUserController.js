@@ -3,6 +3,9 @@ const db = new sqlite3.Database('database/players.db');
 
 module.exports = (req, res) => {
     db.all('SELECT id, name, appearances, height, position FROM players', (err, rows) => {
-        res.send(rows);
+        console.log(rows);
+        db.close(() => {
+            res.send(rows);
+        });
     });
 }

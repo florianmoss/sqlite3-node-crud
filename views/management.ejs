@@ -9,40 +9,117 @@
     <%- include('layouts/cdn'); -%>
     <script src="/js/management.js"></script>
     <link href="/stylesheets/style.css" rel="stylesheet">
+    
 </head>
 
 <body>
     <%- include('layouts/header'); -%>
-    <h1>Player Management</h1>
-
-    Name: <input id="nameBox" type="text" size="20" />
-    <button id="readButton">Get profile</button>
-    <button id="deleteButton">Delete Profile</button>
-    <button id="allUsersButton">Get all players</button>
-
-    <hr />
-    Name: <input id="insertNameBox" type="text" size="20" />
-    Number of Appearances: <input id="insertAppBox" type="text" size="20" />
-    Height: <input id="insertHeightBox" type="number" size="20" />
-    Position: <input id="insertPosBox" type="text" size="20" />
-    <button id="insertButton">Insert into database</button>
-
-    <hr />
-    <div id="updateDiv" style="visibility: hidden;">
-        <input id="updateIdBox" type="hidden" />
-        Name: <input id="updateNameBox" type="text" size="20" />
-        Number of Appearances: <input id="updateAppBox" type="text" size="20" />
-        Height: <input id="updateHeightBox" type="number" size="20" />
-        Position: <input id="updatePosBox" type="text" size="20" />
-        <button id="updateButton">Update entry</button>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Player Management</h1>
+            <p class="lead">View, add, remove or update player details. A team can contain a maximum of 10 players.</p>
+        </div>
     </div>
 
-    <hr />
-    <div id="status"></div>
+    <div class="container-sm">
+        <div class="h1 mb-4 text-center">Player Details</div>
 
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Appearances</th>
+                    <th scope="col">Height in cm</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(function(el) { %>
+                <form action="/updateById" method="POST">
+                    <tr>
+                        <td>
+                            <input id="nameBox<%= el.id %>" name="name" type="text" size="20"
+                                value="<%= el.name %>"></input>
+                        </td>
+                        <td>
+                            <select name="position" id="posBox<%= el.id %>">
+                                <% positions.forEach(function(pos) { %>
+                                <option value="<%= pos.name %>"><%= pos.name %></option>
+                                <% }); %>
+                            </select>
+                        </td>
+                        <td>
+                            <input name="appearances" id="appBox<%= el.id %>" type="number" size="20"
+                                value="<%= el.appearances %>" />
+                        </td>
+                        <td>
+                            <input name="height" id="heightBox<%= el.id %>" type="number" size="20"
+                                value="<%= el.height %>" />
+                        </td>
+                        <td>
+                            <input name="num" type="hidden" value="<%= el.id %>" />
+                            <button id="submitButton" class="submitButton"><i class="fas fa-edit"></i></button>
+                        </td>
+                </form>
+                <form action="/deluser" method="POST">
+                    <td>
+                        <input name="num" type="hidden" value="<%= el.id %>" />
+                        <button id="delButton" class="deleteButton" type="submit"><i
+                                class="fas fa-times-circle"></i></button>
+                    </td>
+                </form>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <% if(data.length < 10) { %>
+        <button type="button" id="addPlayer" class="btn btn-success btn-lg btn-block">Add Player</button>
+        <% } %>
+
+        <div class="container" id="addPlayerContainer" style="visibility: hidden;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">Appearances</th>
+                        <th scope="col">Height in cm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input id="insertNameBox" name="name" type="text" size="30">
+                        </td>
+                        <td>
+                            <select id="insertPosBox" name="position">
+                                <% positions.forEach(function(pos) { %>
+                                <option value="<%= pos.name %>"><%= pos.name %></option>
+                                <% }); %>
+                            </select>
+                        </td>
+                        <td>
+                            <input id="insertAppBox" name="appearances" type="number" placeholder="0">
+                        </td>
+                        <td>
+                            <input id="insertHeightBox" name="height" type="number" placeholder="180">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" id="insertButton" class="btn btn-success btn-lg btn-block">Insert Player</button>
+        </div>
+
+    </div>
+    <div class="my-6"></div>
+    <% data.forEach(function(el) { %>
+    <div id="posHeld<%= el.id %>" style="visibility: hidden;">
+        <p><%= el.position %></p>
+    </div>
+    <% }); %>
     <%- include('layouts/footer'); -%>
 </body>
-
-</html>
 
 </html>
