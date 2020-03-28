@@ -1,0 +1,65 @@
+/* Container holding the image and the text */
+.container2 {
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+/* Bottom left text */
+.bottom-left {
+    position: absolute;
+    bottom: 25%;
+    left: 40%;
+}
+
+/* Top left text */
+.top-left {
+    position: absolute;
+    top: 25%;
+    left: 40%;
+}
+
+/* Top right text */
+.top-right {
+    position: absolute;
+    top: 25%;
+    right: 40%;
+}
+
+/* Bottom right text */
+.bottom-right {
+    position: absolute;
+    bottom: 25%;
+    right: 40%;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bench {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.playerInfo {
+    position: absolute;
+    bottom: 35%;
+    left: 5%;
+    width: 15%;
+}
+
+.item1,
+.item2 {
+    display: none;
+}
+
+.my-6 {
+    padding-top: 40px;
+}

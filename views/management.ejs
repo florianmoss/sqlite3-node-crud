@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Player Management</title>
+    <%- include('layouts/cdn'); -%>
+    <script src="/js/management.js"></script>
+    <link href="/stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('layouts/header'); -%>
+    <h1>Player Management</h1>
+
+    Name: <input id="nameBox" type="text" size="20" />
+    <button id="readButton">Get profile</button>
+    <button id="deleteButton">Delete Profile</button>
+    <button id="allUsersButton">Get all players</button>
+
+    <hr />
+    Name: <input id="insertNameBox" type="text" size="20" />
+    Number of Appearances: <input id="insertAppBox" type="text" size="20" />
+    Height: <input id="insertHeightBox" type="number" size="20" />
+    Position: <input id="insertPosBox" type="text" size="20" />
+    <button id="insertButton">Insert into database</button>
+
+    <hr />
+    <div id="updateDiv" style="visibility: hidden;">
+        <input id="updateIdBox" type="hidden" />
+        Name: <input id="updateNameBox" type="text" size="20" />
+        Number of Appearances: <input id="updateAppBox" type="text" size="20" />
+        Height: <input id="updateHeightBox" type="number" size="20" />
+        Position: <input id="updatePosBox" type="text" size="20" />
+        <button id="updateButton">Update entry</button>
+    </div>
+
+    <hr />
+    <div id="status"></div>
+
+    <%- include('layouts/footer'); -%>
+</body>
+
+</html>
+
+</html>
