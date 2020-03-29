@@ -17,7 +17,7 @@ app.use(express.static('public'));
 app.use('/', indexRouter);
 
 app.listen(5555, () => {
-  console.log('Server started at http://localhost:3000/');
+  console.log('Server started at http://localhost:5555/');
 });
 
 module.exports = app;

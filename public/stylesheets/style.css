@@ -117,7 +117,8 @@ section .section-title {
   background-color: #f05151;
 }
 
-.resultPadding {
+.resultPadding,
+.resultPadding2 {
   font-size: large;
   font-weight: 600;
   padding-top: 15px;
@@ -129,3 +130,4 @@ section .section-title {
 .centerVs {
   margin-top: 0px;
 }
+

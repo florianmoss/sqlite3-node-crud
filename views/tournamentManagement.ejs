@@ -8,16 +8,18 @@
     <title>Tournament</title>
 
     <%- include('layouts/cdn'); -%>
-    <script src="/js/tournament.js"></script>
+    <script src="/js/tournamentManagement.js"></script>
     <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/results.css" rel="stylesheet">
 </head>
 
 <body>
     <%- include('layouts/header'); -%>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">Tournament Results</h1>
-            <p class="lead">The latest tournament results are displayed. Results are subject to the Irish Netball Associations approval.</p>
+            <h1 class="display-4">Tournament Management</h1>
+            <p class="lead">Tournament results might be pre-loaded. All results can be manually edited or randomized.
+            </p>
         </div>
     </div>
     <table class="table table-borderless">
@@ -48,13 +50,28 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm">
-                                        <span class="badge badge-pill resultPadding"><%= el.homeResult %></span>
+                                        <form action="/updateResults" method="POST">
+                                            <span class="badge badge-pill resultPadding">
+                                                <input type="number" id="homeValue<%= el.id %>" name="homeValue"
+                                                    value="<%= el.homeResult %>" />
+                                            </span>
                                     </div>
                                     <div class="col-sm">
-                                        <div class="resultPadding2 centerVs">vs</div>
+                                        <div class="centerVs">
+                                            <button type="submit" id="saveButton<%= el.id %>" class="btn btn-light">
+                                                <span style="font-size: 1.5em; color: rgb(29, 143, 0);">
+                                                    <i class="fas fa-save"></i>
+                                                </span>
+                                            </button>
+                                        </div>
                                     </div>
                                     <div class="col-sm">
-                                        <span class="badge badge-pill resultPadding"><%= el.awayResult %></span>
+                                        <span class="badge badge-pill resultPadding">
+                                            <input type="number" id="awayValue<%= el.id %>" name="awayValue"
+                                                value="<%= el.awayResult %>" />
+                                        </span>
+                                        <input type="hidden" name="num" value="<%= el.id %>" />
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -66,6 +83,11 @@
                                         <%= el.home %>
                                     </div>
                                     <div class="col-sm">
+                                        <button type="button" id="randomButton<%= el.id %>" class="btn btn-light">
+                                            <span style="font-size: 1.5em; color: rgb(20, 36, 92);">
+                                                <i class="fas fa-random"></i>
+                                            </span>
+                                        </button>
                                     </div>
                                     <div class="col-sm">
                                         <%= el.away %>
