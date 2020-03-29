@@ -14,12 +14,53 @@
 
 <body>
     <%- include('layouts/header'); -%>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+    <div class="jumbotron jumbotron-fluid tournamentJumbo">
+        <div class="container jumboText">
             <h1 class="display-4">Tournament Results</h1>
-            <p class="lead">The latest tournament results are displayed. Results are subject to the Irish Netball Associations approval.</p>
+            <p class="lead">The latest tournament results are displayed. Results are subject to the Irish Netball
+                Associations approval.</p>
         </div>
     </div>
+
+    <div class="container">
+        <div class="h1 mb-4 text-center">Tournament Standings</div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <table class="table table-striped table-hover" width="60%">
+                    <thead>
+                        <tr>
+                            <td>Team</td>
+                            <td>Games</td>
+                            <td>Win</td>
+                            <td>Draw</td>
+                            <td>Loss</td>
+                            <td>Goals Scored</td>
+                            <td>Goals Against</td>
+                            <td>Difference</td>
+                            <td>Points</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% result.forEach(function(el) { %>
+                        <tr>
+                            <td><img src="<%= el.image %>" width="45px" alt=""></td>
+                            <td><%= el.games %></td>
+                            <td><%= el.win %></td>
+                            <td><%= el.draw %></td>
+                            <td><%= el.loss %></td>
+                            <td><%= el.scored %></td>
+                            <td><%= el.against %></td>
+                            <td><%= el.difference %></td>
+                            <td><strong><%= el.points %></strong></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="my-6"></div>
+    <div class="h1 mb-4 text-center">Game Results</div>
     <table class="table table-borderless">
         <tbody>
             <% data.forEach(function(el) { %>

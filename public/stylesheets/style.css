@@ -131,3 +131,15 @@ section .section-title {
   margin-top: 0px;
 }
 
+.tournamentJumbo {
+  background-image: url('/img/tournament.jpg');
+}
+
+.indexJumbo {
+  background-image: url('/img/index.jpg');
+}
+
+.jumboText {
+  background-color: rgba(9, 47, 51, 0.349);
+  color: #ffffff;
+}

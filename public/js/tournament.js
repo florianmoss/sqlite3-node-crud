@@ -6,6 +6,9 @@ $(document).ready(() => {
         if ($(".resultPadding").eq(i).text() > $(".resultPadding").eq(i + 1).text()) {
             $(".resultPadding").eq(i).addClass('badge-success');
             $(".resultPadding").eq(i + 1).addClass('badge-danger');
+        } else if ($(".resultPadding").eq(i).text() == $(".resultPadding").eq(i + 1).text()) {
+            $(".resultPadding").eq(i).addClass('badge-warning');
+            $(".resultPadding").eq(i + 1).addClass('badge-warning');
         } else {
             $(".resultPadding").eq(i).addClass('badge-danger');
             $(".resultPadding").eq(i + 1).addClass('badge-success');
