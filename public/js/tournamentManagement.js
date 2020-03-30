@@ -21,6 +21,14 @@ $(document).ready(() => {
 
     }
 
+    $('#removeAllButton').click(() => {
+        $.ajax({
+            url: 'removeallmatches',
+            type: 'POST'
+        });
+        $('#contentTable').remove();
+    })
+
     $('#matchInput').css("visibility", "hidden");
 
     $('#addMatchButton').click(() => {

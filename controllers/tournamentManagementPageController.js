@@ -10,11 +10,11 @@ module.exports = (req, res, next) => {
             let allTeams = [...new Set([...homeTeams, ...awayTeams])];
             console.log(rows);
             console.log(allTeams);
-            
+
 
             res.render('tournamentManagement', {
                 data: rows,
-                teams: allTeams
+                teams: ['LYIT', 'Cork', 'NUIG', 'Sligo']
             });
         });
     });

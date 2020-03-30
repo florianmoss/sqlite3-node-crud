@@ -22,7 +22,10 @@
             </p>
         </div>
     </div>
-    <table class="table table-borderless">
+    <div class="h1 mb-4 text-center">
+        <button type="button" id="removeAllButton" class="btn btn-danger btn-lg btn-block">Remove All Matches</button>
+    </div>
+    <table class="table table-borderless" id="contentTable">
         <tbody>
             <% data.forEach(function(el) { %>
             <tr id="row<%= el.id %>">
@@ -110,7 +113,7 @@
         </tbody>
     </table>
     <div class="h1 mb-4 text-center">
-        <button type="button" id="addMatchButton" class="btn btn-success btn-lg">Add Match</button>
+        <button type="button" id="addMatchButton" class="btn btn-success btn-lg btn-block">Add Match</button>
     </div>
     <div id="matchInput" class="col-md-8 offset-md-2">
         <form>

@@ -136,14 +136,18 @@ section .section-title {
 }
 
 .indexJumbo {
-  background-image: url('/img/index.jpg');
+  background: url('/img/index.jpg') no-repeat center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .greenJumbo {
-  background-image: url('/img/green.jpg');
+  background-color: #007b5e;
+  border: 1px solid #000000;
 }
 
 .jumboText {
-  background-color: rgba(9, 47, 51, 0.349);
   color: #ffffff;
 }

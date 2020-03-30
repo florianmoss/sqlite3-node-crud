@@ -19,6 +19,7 @@ const shuffleTeamController = require('../controllers/shuffleTeamController');
 const updateResultsController = require('../controllers/updateResultsController');
 const addMatchController = require('../controllers/addMatchController');
 const removeMatchController = require('../controllers/removeMatchController');
+const removeAllMatchesController = require('../controllers/removeAllMatchesController');
 
 /* GET home page. */
 router.get('/', homePageController);
@@ -39,6 +40,7 @@ router.post('/shuffleTeam', shuffleTeamController);
 router.post('/updateResults', updateResultsController);
 router.post('/addmatch', addMatchController);
 router.post('/removematch', removeMatchController);
+router.post('/removeallmatches', removeAllMatchesController);
 
 
 module.exports = router;
