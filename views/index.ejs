@@ -45,7 +45,6 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Position</th>
           <th scope="col">Appearances</th>
@@ -55,8 +54,7 @@
       <tbody>
         <% data.forEach(function(el) { %>
         <tr>
-          <th scope="row"><%= el.id %></th>
-          <td><%= el.name %></td>
+          <td scope="row"><%= el.name %></td>
           <td><%= el.position %></td>
           <td><%= el.appearances %></td>
           <td><%= el.height %></td>
