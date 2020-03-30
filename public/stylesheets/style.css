@@ -139,6 +139,10 @@ section .section-title {
   background-image: url('/img/index.jpg');
 }
 
+.greenJumbo {
+  background-image: url('/img/green.jpg');
+}
+
 .jumboText {
   background-color: rgba(9, 47, 51, 0.349);
   color: #ffffff;

@@ -15,8 +15,8 @@
 
 <body>
     <%- include('layouts/header'); -%>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+    <div class="jumbotron jumbotron-fluid greenJumbo">
+        <div class="container jumboText">
             <h1 class="display-4">Tournament Management</h1>
             <p class="lead">Tournament results might be pre-loaded. All results can be manually edited or randomized.
             </p>
@@ -53,7 +53,8 @@
                                         <form action="/updateResults" method="POST">
                                             <span class="badge badge-pill resultPadding">
                                                 <input type="number" id="homeValue<%= el.id %>" name="homeValue"
-                                                    value="<%= el.homeResult %>" />
+                                                    value="<%= el.homeResult %>" class="form-control" min="0"
+                                                    max="99" />
                                             </span>
                                     </div>
                                     <div class="col-sm">
@@ -68,7 +69,7 @@
                                     <div class="col-sm">
                                         <span class="badge badge-pill resultPadding">
                                             <input type="number" id="awayValue<%= el.id %>" name="awayValue"
-                                                value="<%= el.awayResult %>" />
+                                                value="<%= el.awayResult %>" class="form-control" min="0" max="99" />
                                         </span>
                                         <input type="hidden" name="num" value="<%= el.id %>" />
                                         </form>
@@ -102,9 +103,38 @@
                 </td>
             </tr>
             <% }); %>
-
         </tbody>
     </table>
+    <div class="h1 mb-4 text-center">
+        <button type="button" id="addMatchButton" class="btn btn-success btn-lg">Add Match</button>
+    </div>
+    <div id="matchInput" class="col-md-8 offset-md-2">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputHome">Home</label>
+                    <select id="inputHome" class="form-control">
+                        <% teams.forEach(function(el) { %>
+                        <option><%= el %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputAway">Away</label>
+                    <select id="inputAway" class="form-control">
+                        <% teams.forEach(function(el) { %>
+                        <option><%= el %></option>
+                        <% }); %>
+                    </select>
+                </div>
+            </div>
+            <div class="h1 mb-4 text-center">
+                <button type="button" id="insertMatch" class="btn btn-success btn-lg">Add</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="my-6"></div>
     <%- include('layouts/footer'); -%>
 </body>
 

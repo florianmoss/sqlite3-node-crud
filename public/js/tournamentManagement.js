@@ -7,4 +7,25 @@ $(document).ready(() => {
         });
     }
 
+    $('#matchInput').css("visibility", "hidden");
+
+    $('#addMatchButton').click(() => {
+        if ($('#matchInput').css("visibility") == 'hidden') {
+            $('#matchInput').css("visibility", "visible");
+            $('#addMatchButton').css("visibility", "hidden");
+        } else {
+            $('#matchInput').css("visibility", "hidden");
+        }
+    })
+
+    $('#insertMatch').click(() => {
+        $('#matchInput').css("visibility", "hidden");
+        $('#addMatchButton').css("visibility", "visible");
+    })
+
+    $('#cancelMatch').click(() => {
+        $('#matchInput').css("visibility", "hidden");
+        $('#addMatchButton').css("visibility", "visible");
+    })
+
 });

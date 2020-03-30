@@ -4,15 +4,7 @@ const db = new sqlite3.Database('database/players.db');
 module.exports = (req, res, next) => {
     db.serialize(() => {
         let results = [];
-        // < td > < %= el.name % > < /td> <
-        //     td > < %= el.games % > < /td> <
-        //     td > < %= el.win % > < /td> <
-        //     td > < %= el.draw % > < /td> <
-        //     td > < %= el.loss % > < /td> <
-        //     td > < %= el.scored % > < /td> <
-        //     td > < %= el.against % > < /td> <
-        //     td > < %= el.difference % > < /td> <
-        //     td > < strong > < %= el.points % > < /strong></td >
+
         db.all('SELECT * FROM results', (err, rows) => {
             let homeTeams = rows.map(e => e.home);
             let awayTeams = rows.map(e => e.away);

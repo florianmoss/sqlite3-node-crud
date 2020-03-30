@@ -9,13 +9,13 @@
     <%- include('layouts/cdn'); -%>
     <script src="/js/management.js"></script>
     <link href="/stylesheets/style.css" rel="stylesheet">
-    
+
 </head>
 
 <body>
     <%- include('layouts/header'); -%>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+    <div class="jumbotron jumbotron-fluid greenJumbo">
+        <div class="container jumboText">
             <h1 class="display-4">Player Management</h1>
             <p class="lead">View, add, remove or update player details. A team can contain a maximum of 10 players.</p>
         </div>
@@ -31,7 +31,7 @@
                     <th scope="col">Position</th>
                     <th scope="col">Appearances</th>
                     <th scope="col">Height in cm</th>
-                    <th scope="col">Update</th>
+                    <th scope="col">Save</th>
                     <th scope="col">Remove</th>
                 </tr>
             </thead>
@@ -40,33 +40,33 @@
                 <form action="/updateById" method="POST">
                     <tr>
                         <td>
-                            <input id="nameBox<%= el.id %>" name="name" type="text" size="20"
-                                value="<%= el.name %>"></input>
+                            <input class="form-control" id="nameBox<%= el.id %>" name="name" type="text" size="20"
+                                value="<%= el.name %>" pattern="[a-zA-Z]+"></input>
                         </td>
                         <td>
-                            <select name="position" id="posBox<%= el.id %>">
+                            <select class="form-control" name="position" id="posBox<%= el.id %>">
                                 <% positions.forEach(function(pos) { %>
                                 <option value="<%= pos.name %>"><%= pos.name %></option>
                                 <% }); %>
                             </select>
                         </td>
                         <td>
-                            <input name="appearances" id="appBox<%= el.id %>" type="number" size="20"
-                                value="<%= el.appearances %>" />
+                            <input class="form-control" name="appearances" id="appBox<%= el.id %>" type="number"
+                                size="20" value="<%= el.appearances %>" min="0" max="999" />
                         </td>
                         <td>
-                            <input name="height" id="heightBox<%= el.id %>" type="number" size="20"
-                                value="<%= el.height %>" />
+                            <input class="form-control" name="height" id="heightBox<%= el.id %>" type="number" size="20"
+                                value="<%= el.height %>" min="1" max="210" />
                         </td>
                         <td>
                             <input name="num" type="hidden" value="<%= el.id %>" />
-                            <button id="submitButton" class="submitButton"><i class="fas fa-edit"></i></button>
+                            <button id="submitButton" class="btn btn-success"><i class="fas fa-save"></i></button>
                         </td>
                 </form>
                 <form action="/deluser" method="POST">
                     <td>
-                        <input name="num" type="hidden" value="<%= el.id %>" />
-                        <button id="delButton" class="deleteButton" type="submit"><i
+                        <input class="form-control" name="num" type="hidden" value="<%= el.id %>" />
+                        <button id="delButton" class="btn btn-danger" type="submit"><i
                                 class="fas fa-times-circle"></i></button>
                     </td>
                 </form>
@@ -91,29 +91,31 @@
                 <tbody>
                     <tr>
                         <td>
-                            <input id="insertNameBox" name="name" type="text" size="30">
+                            <input class="form-control" id="insertNameBox" name="name" type="text" size="30"
+                                pattern="[a-zA-Z]+">
                         </td>
                         <td>
-                            <select id="insertPosBox" name="position">
+                            <select class="form-control" id="insertPosBox" name="position">
                                 <% positions.forEach(function(pos) { %>
                                 <option value="<%= pos.name %>"><%= pos.name %></option>
                                 <% }); %>
                             </select>
                         </td>
                         <td>
-                            <input id="insertAppBox" name="appearances" type="number" placeholder="0">
+                            <input id="insertAppBox" class="form-control" name="appearances" type="number"
+                                placeholder="0" min="0" max="999">
                         </td>
                         <td>
-                            <input id="insertHeightBox" name="height" type="number" placeholder="180">
+                            <input id="insertHeightBox" class="form-control" name="height" type="number"
+                                placeholder="180" min="1" max="210">
                         </td>
                     </tr>
                 </tbody>
             </table>
             <button type="button" id="insertButton" class="btn btn-success btn-lg btn-block">Insert Player</button>
         </div>
-
     </div>
-    <div class="my-6"></div>
+
     <% data.forEach(function(el) { %>
     <div id="posHeld<%= el.id %>" style="visibility: hidden;">
         <p><%= el.position %></p>
