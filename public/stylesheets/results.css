@@ -1,3 +1,12 @@
 input[type=number] {
     width: 80px;
 }
+
+.btn-dark {
+    background-color: #ffffff;
+    border-radius: 50px;
+}
+
+.btn-light {
+    border-radius: 50px;
+}

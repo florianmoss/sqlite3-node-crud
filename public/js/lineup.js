@@ -52,4 +52,12 @@ $(document).ready(() => {
         location.reload();
 
     });
+
+    let size = $(".positional").toArray().length;
+    console.log(size);
+
+    let positions = ['bottom-left', 'top-left', 'top-right', 'bottom-right', 'centered'];
+    for (let i = 0; i < size; i++) {
+        $(".positional").eq(i).addClass(positions[i]);
+    }
 });

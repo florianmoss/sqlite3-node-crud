@@ -2,7 +2,12 @@ const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('database/players.db');
 
 module.exports = (req, res, next) => {
+    let players = [];
     db.serialize(() => {
+        db.all('SELECT name FROM players', (err, rows) => {
+            players = rows;
+        });
+
         db.all('SELECT * FROM results', (err, rows) => {
             let homeTeams = rows.map(e => e.home);
             let awayTeams = rows.map(e => e.away);
@@ -14,7 +19,8 @@ module.exports = (req, res, next) => {
 
             res.render('tournamentManagement', {
                 data: rows,
-                teams: ['LYIT', 'Cork', 'NUIG', 'Sligo']
+                teams: ['LYIT', 'Cork', 'NUIG', 'Sligo'],
+                players: players
             });
         });
     });

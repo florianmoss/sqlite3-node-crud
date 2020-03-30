@@ -10,6 +10,7 @@
     <%- include('layouts/cdn'); -%>
     <script src="/js/lineup.js"></script>
     <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/index.css" rel="stylesheet">
 </head>
 
 <body>
@@ -61,6 +62,20 @@
                 </table>
             </div>
         </div>
+    </div>
+    <div class="container2">
+        <img src="img/court.jpg" alt="netball court" style="width:50%;">
+        <div class="bench">
+            <% notPlaying.forEach(function(el) { %>
+            <span class="badge badge-pill badge-info p-3"><%= el.name %></span>
+            <% }); %>
+        </div>
+
+        <% playing.forEach(function(el) { %>
+        <div class="positional">
+            <span class="badge badge-pill badge-info p-3"><%= el.name %></span>
+        </div>
+        <% }); %>
     </div>
     <div class="my-6"></div>
     <div class="my-6"></div>
