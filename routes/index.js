@@ -9,13 +9,16 @@ const tournamentManagementPageController = require('../controllers/tournamentMan
 
 const getUsersController = require('../controllers/getUsersController');
 const getIdController = require('../controllers/getIdController');
-const postUsersController = require('../controllers/postUsersController');
+const getAllUserController = require('../controllers/getAllUserController');
 const getUserInformtionController = require('../controllers/getUserInformationController');
+
+const postUsersController = require('../controllers/postUsersController');
 const delUserController = require('../controllers/delUserController');
 const updateByIdController = require('../controllers/updateByIdController');
-const getAllUserController = require('../controllers/getAllUserController');
 const shuffleTeamController = require('../controllers/shuffleTeamController');
-const updateResultsController = require('../controllers/updateResultsController')
+const updateResultsController = require('../controllers/updateResultsController');
+const addMatchController = require('../controllers/addMatchController');
+const removeMatchController = require('../controllers/removeMatchController');
 
 /* GET home page. */
 router.get('/', homePageController);
@@ -27,11 +30,15 @@ router.get('/tournamentManagement', tournamentManagementPageController)
 router.get('/users', getUsersController);
 router.get('/usersid', getIdController);
 router.get('/usersall', getAllUserController);
-router.post('/users', postUsersController);
 router.get('/users/:userid', getUserInformtionController);
+
+router.post('/users', postUsersController);
 router.post('/deluser', delUserController);
 router.post('/updateById', updateByIdController)
 router.post('/shuffleTeam', shuffleTeamController);
 router.post('/updateResults', updateResultsController);
+router.post('/addmatch', addMatchController);
+router.post('/removematch', removeMatchController);
+
 
 module.exports = router;

@@ -1,10 +1,24 @@
 $(document).ready(() => {
-    for (let i = 1; i < 7; i++) {
+    for (let i = 1; i < 99; i++) {
         $('#randomButton' + i).click(() => {
-            $('#homeValue' + i).val(Math.floor(Math.random() * 11));
+            $('#row' + i).val(Math.floor(Math.random() * 11));
             $('#awayValue' + i).val(Math.floor(Math.random() * 11));
             $('#saveButton' + i).click();
         });
+    }
+
+    for (let i = 1; i < 99; i++) {
+        $('#deleteButton' + i).click(() => {
+            $('#row' + i).remove();
+            $.ajax({
+                url: 'removematch',
+                type: 'POST',
+                data: {
+                    num: i,
+                }
+            });
+        });
+
     }
 
     $('#matchInput').css("visibility", "hidden");
@@ -19,6 +33,23 @@ $(document).ready(() => {
     })
 
     $('#insertMatch').click(() => {
+        console.log($('#inputHome').val().toLowerCase());
+
+        $.ajax({
+            url: 'addmatch',
+            type: 'POST',
+            data: {
+                home: $('#inputHome').val(),
+                away: $('#inputAway').val(),
+                homeResult: 0,
+                awayResult: 0,
+                homeImage: '/img/' + $('#inputHome').val().toLowerCase() + '.png',
+                awayImage: '/img/' + $('#inputAway').val().toLowerCase() + '.png'
+            },
+            success: (data) => {
+                location.reload();
+            }
+        });
         $('#matchInput').css("visibility", "hidden");
         $('#addMatchButton').css("visibility", "visible");
     })

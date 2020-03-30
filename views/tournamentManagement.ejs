@@ -25,7 +25,7 @@
     <table class="table table-borderless">
         <tbody>
             <% data.forEach(function(el) { %>
-            <tr>
+            <tr id="row<%= el.id %>">
                 <td class="align-middle">
                     <img src="<%= el.homeImage %>" width="200px" class="mx-auto d-block">
                 </td>
@@ -38,7 +38,11 @@
                                         Home
                                     </div>
                                     <div class="col-sm">
-                                        <strong>Game #<%= el.id %></strong>
+                                        <button type="button" id="deleteButton<%= el.id %>" class="btn btn-light">
+                                            <span style="font-size: 1.5em; color: rgb(124, 27, 20);">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </button>
                                     </div>
                                     <div class="col-sm">
                                         Away
@@ -130,6 +134,7 @@
             </div>
             <div class="h1 mb-4 text-center">
                 <button type="button" id="insertMatch" class="btn btn-success btn-lg">Add</button>
+                <button type="button" id="cancelMatch" class="btn btn-danger btn-lg">Cancel</button>
             </div>
         </form>
     </div>
