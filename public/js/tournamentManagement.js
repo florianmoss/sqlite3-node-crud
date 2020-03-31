@@ -128,25 +128,29 @@ $(document).ready(() => {
     })
 
     $('#insertMatch').click(() => {
-        console.log($('#inputHome').val().toLowerCase());
+        if ($('#inputHome').val() != $('#inputAway').val()) {
+            $.ajax({
+                url: 'addmatch',
+                type: 'POST',
+                data: {
+                    home: $('#inputHome').val(),
+                    away: $('#inputAway').val(),
+                    homeResult: 0,
+                    awayResult: 0,
+                    homeImage: '/img/' + $('#inputHome').val().toLowerCase() + '.png',
+                    awayImage: '/img/' + $('#inputAway').val().toLowerCase() + '.png'
+                },
+                success: (data) => {
+                    location.reload();
+                }
+            });
+            $('#matchInput').css("visibility", "hidden");
+            $('#addMatchButton').css("visibility", "visible");
+        } else {
+            alert("Home and Away Teams can't be the same.")
+        }
 
-        $.ajax({
-            url: 'addmatch',
-            type: 'POST',
-            data: {
-                home: $('#inputHome').val(),
-                away: $('#inputAway').val(),
-                homeResult: 0,
-                awayResult: 0,
-                homeImage: '/img/' + $('#inputHome').val().toLowerCase() + '.png',
-                awayImage: '/img/' + $('#inputAway').val().toLowerCase() + '.png'
-            },
-            success: (data) => {
-                location.reload();
-            }
-        });
-        $('#matchInput').css("visibility", "hidden");
-        $('#addMatchButton').css("visibility", "visible");
+
     })
 
     $('#cancelMatch').click(() => {
