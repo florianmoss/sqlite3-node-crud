@@ -83,21 +83,26 @@ $(document).ready(() => {
         });
 
         $('#updatePlayerScores' + i).click(() => {
-            let arr = {};
-            pla.forEach(el => {
-                arr[el] = $('#scoreCard' + i + el).text().trim();
-            });
-            $.ajax({
-                url: 'addplayerscores',
-                type: 'POST',
-                data: {
-                    data: JSON.stringify(arr),
-                    num: i,
-                },
-                success: (data) => {
-                    $('#extraBtn' + i).click();
-                }
-            });
+            if (availablePoints == 0) {
+                let arr = {};
+                pla.forEach(el => {
+                    arr[el] = $('#scoreCard' + i + el).text().trim();
+                });
+                $.ajax({
+                    url: 'addplayerscores',
+                    type: 'POST',
+                    data: {
+                        data: JSON.stringify(arr),
+                        num: i,
+                    },
+                    success: (data) => {
+                        $('#extraBtn' + i).click();
+                    }
+                });
+            } else {
+                alert("Please allocate all goals scored first.");
+            }
+
 
 
         });
