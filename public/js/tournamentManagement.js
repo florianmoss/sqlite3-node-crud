@@ -10,6 +10,7 @@ $(document).ready(() => {
     for (let i = 1; i < 99; i++) {
         $('#deleteButton' + i).click(() => {
             $('#row' + i).remove();
+            $('#extra' + i).remove();
             $.ajax({
                 url: 'removematch',
                 type: 'POST',
@@ -18,7 +19,31 @@ $(document).ready(() => {
                 }
             });
         });
+    }
 
+    for (let i = 1; i < 99; i++) {
+        $('#extraBtn' + i).click(() => {
+            if ($('#extraBtnIcon' + i).hasClass('fa-angle-down')) {
+                $('#extraBtnIcon' + i).removeClass('fa-angle-down');
+                $('#extraBtnIcon' + i).addClass('fa-angle-up');
+            } else {
+                $('#extraBtnIcon' + i).removeClass('fa-angle-up');
+                $('#extraBtnIcon' + i).addClass('fa-angle-down');
+            }
+
+            let h = $('#extraBtn' + i).parent().parent().siblings("#row" + i).children().eq(0).children().eq(0).attr('src');
+            let a = $('#extraBtn' + i).parent().parent().siblings("#row" + i).children().eq(2).children().eq(0).attr('src');
+
+            h = h.slice(5, h.length).split('.')[0];
+            a = a.slice(5, a.length).split('.')[0];
+
+            if (h == 'lyit' || a == 'lyit') {
+
+            } else {
+                //$('#extra' + i).remove();
+                $('#collapse' + i).html('<div class="h6 mb-4 text-center">Not a LYIT match.</div>');
+            }
+        });
     }
 
     $('#removeAllButton').click(() => {
@@ -66,5 +91,7 @@ $(document).ready(() => {
         $('#matchInput').css("visibility", "hidden");
         $('#addMatchButton').css("visibility", "visible");
     })
+
+
 
 });

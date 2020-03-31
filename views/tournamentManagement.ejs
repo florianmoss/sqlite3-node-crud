@@ -109,13 +109,13 @@
                     <img src="<%= el.awayImage %>" width="200px" class="mx-auto d-block">
                 </td>
             </tr>
-            <tr>
+            <tr id="extra<%= el.id %>">
                 <td></td>
                 <td class="align-middle">
-                    <button class="btn btn-light col-md-8 offset-md-2" type="button" data-toggle="collapse"
+                    <button class="btn btn-light col-md-8 offset-md-2" type="button" data-toggle="collapse" id="extraBtn<%= el.id %>"
                         data-target="#collapse<%= el.id %>" aria-expanded="false" aria-controls="collapse<%= el.id %>">
                         <span style="font-size: 1.5em; color: rgb(20, 36, 92);">
-                            <i class="fas fa-angle-down"></i>
+                            <i id="extraBtnIcon<%= el.id %>" class="fas fa-angle-down"></i>
                         </span>
                     </button>
                     <div class="collapse mt-3" id="collapse<%= el.id %>">
@@ -144,10 +144,8 @@
                                         </button>
                                     </td>
                                     <td>
-
                                     </td>
                                     <td>
-
                                     </td>
                                 </tr>
                                 <% }); %>
