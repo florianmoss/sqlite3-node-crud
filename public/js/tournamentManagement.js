@@ -1,13 +1,26 @@
 $(document).ready(() => {
-    for (let i = 1; i < 99; i++) {
+    const maxVal = 999;
+    let availablePoints;
+    let pla;
+
+    pla = $.ajax({
+        url: 'users',
+        async: false,
+        type: 'GET',
+        dataType: 'json',
+        success: (data) => {
+            pla = Array.from(data);
+        }
+    }).responseJSON;
+    console.log(pla);
+
+    for (let i = 1; i < maxVal; i++) {
         $('#randomButton' + i).click(() => {
             $('#homeValue' + i).val(Math.floor(Math.random() * 11));
             $('#awayValue' + i).val(Math.floor(Math.random() * 11));
             $('#saveButton' + i).click();
         });
-    }
 
-    for (let i = 1; i < 99; i++) {
         $('#deleteButton' + i).click(() => {
             $('#row' + i).remove();
             $('#extra' + i).remove();
@@ -19,10 +32,9 @@ $(document).ready(() => {
                 }
             });
         });
-    }
 
-    for (let i = 1; i < 99; i++) {
         $('#extraBtn' + i).click(() => {
+
             if ($('#extraBtnIcon' + i).hasClass('fa-angle-down')) {
                 $('#extraBtnIcon' + i).removeClass('fa-angle-down');
                 $('#extraBtnIcon' + i).addClass('fa-angle-up');
@@ -37,12 +49,57 @@ $(document).ready(() => {
             h = h.slice(5, h.length).split('.')[0];
             a = a.slice(5, a.length).split('.')[0];
 
-            if (h == 'lyit' || a == 'lyit') {
-
+            if (h == 'lyit') {
+                availablePoints = $('#homeValue' + i).val();
+            } else if (a == 'lyit') {
+                availablePoints = $('#awayValue' + i).val();
             } else {
                 //$('#extra' + i).remove();
                 $('#collapse' + i).html('<div class="h6 mb-4 text-center">Not a LYIT match.</div>');
             }
+            console.log(availablePoints);
+            console.log(i);
+
+        });
+
+        pla.forEach(el => {
+            $('#scoreMinus' + i + el).click(() => {
+                let v = parseInt($('#scoreCard' + i + el).text()) - 1;
+                if (v >= 0) {
+                    $('#scoreCard' + i + el).text(v);
+                    availablePoints++;
+                }
+
+            });
+
+            $('#scorePlus' + i + el).click(() => {
+                let v = parseInt($('#scoreCard' + i + el).text()) + 1;
+                if (availablePoints > 0) {
+                    $('#scoreCard' + i + el).text(v);
+                    availablePoints--;
+                }
+
+            });
+        });
+
+        $('#updatePlayerScores' + i).click(() => {
+            let arr = {};
+            pla.forEach(el => {
+                arr[el] = $('#scoreCard' + i + el).text().trim();
+            });
+            $.ajax({
+                url: 'addplayerscores',
+                type: 'POST',
+                data: {
+                    data: JSON.stringify(arr),
+                    num: i,
+                },
+                success: (data) => {
+                    $('#extraBtn' + i).click();
+                }
+            });
+
+
         });
     }
 

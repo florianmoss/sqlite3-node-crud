@@ -19,4 +19,44 @@ $(document).ready(() => {
     for (let i = 0; i < size; i++) {
         $(".positional").eq(i).addClass(positions[i]);
     }
+
+    $.ajax({
+        url: 'playerscores',
+        type: 'GET',
+        dataType: 'json',
+        success: (result) => {
+            let keySet = new Set();
+            let totalValues = {};
+            result.forEach(el => {
+                let d = JSON.parse(el['data']);
+                for (key in d) {
+                    keySet.add(key);
+                }
+            });
+            const keys = [...keySet];
+
+            for (i in keys) {
+                totalValues[keys[i]] = 0;
+            }
+
+            result.forEach(el => {
+                let d = JSON.parse(el['data']);
+                for (key in d) {
+                    totalValues[key] += parseInt(d[key]);
+                }
+            });
+
+            for (key in totalValues) {
+                $('#goals' + key).text(totalValues[key])
+            }
+
+            console.log(totalValues);
+
+
+
+
+
+            $('#playerScores').text(result[0].data);
+        }
+    });
 });

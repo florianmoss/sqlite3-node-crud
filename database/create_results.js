@@ -21,4 +21,6 @@
           console.log(row.id + ": " + row.home + "  " + row.away);
       });
 
+      db.run("CREATE TABLE scores (id INTEGER, data TEXT)");
+
   })

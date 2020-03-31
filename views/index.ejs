@@ -46,6 +46,7 @@
       <thead>
         <tr>
           <th scope="col">Name</th>
+          <th scope="col">Goals</th>
           <th scope="col">Position</th>
           <th scope="col">Appearances</th>
           <th scope="col">Height in cm</th>
@@ -54,7 +55,8 @@
       <tbody>
         <% data.forEach(function(el) { %>
         <tr>
-          <td scope="row"><%= el.name %></td>
+          <td scope="row" id="<%= el.name %>"><%= el.name %></td>
+          <td id="goals<%= el.name %>">0</td>
           <td><%= el.position %></td>
           <td><%= el.appearances %></td>
           <td><%= el.height %></td>
