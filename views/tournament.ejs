@@ -62,68 +62,57 @@
     <div class="my-6"></div>
     <div class="h1 mb-4 text-center">Game Results</div>
     <div class="container">
-        <table class="table table-borderless">
-            <tbody>
-                <% data.forEach(function(el) { %>
-                <tr>
-                    <td class="align-middle">
-                        <img src="<%= el.homeImage %>" width="200px" class="mx-auto d-block">
-                    </td>
-                    <td>
-                        <div class="card text-center">
-                            <div class="card-header">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            <strong>Home</strong>
-                                        </div>
-                                        <div class="col-sm">
-                                        </div>
-                                        <div class="col-sm">
-                                            <strong>Away</strong>
-                                        </div>
-                                    </div>
+        <div class="row row-cols-2">
+            <% data.forEach(function(el) { %>
+            <div class="col">
+                <div class="card text-center mt-2 mb-2">
+                    <div class="card-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <strong><%= el.home %></strong>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            <span class="badge badge-pill resultPadding"><%= el.homeResult %></span>
-                                        </div>
-                                        <div class="col-sm">
-                                            <div class="resultPadding2 centerVs">vs</div>
-                                        </div>
-                                        <div class="col-sm">
-                                            <span class="badge badge-pill resultPadding"><%= el.awayResult %></span>
-                                        </div>
-                                    </div>
+                                <div class="col-sm">
                                 </div>
-                            </div>
-                            <div class="card-footer text-muted">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            <%= el.home %>
-                                        </div>
-                                        <div class="col-sm">
-                                        </div>
-                                        <div class="col-sm">
-                                            <%= el.away %>
-                                        </div>
-                                    </div>
+                                <div class="col-sm">
+                                    <strong><%= el.away %></strong>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                    <td class="align-middle">
-                        <img src="<%= el.awayImage %>" width="200px" class="mx-auto d-block">
-                    </td>
-                </tr>
-                <% }); %>
-
-            </tbody>
-        </table>
+                    </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <span class="badge badge-pill resultPadding"><%= el.homeResult %></span>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="resultPadding2 centerVs">vs</div>
+                                </div>
+                                <div class="col-sm">
+                                    <span class="badge badge-pill resultPadding"><%= el.awayResult %></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img src="<%= el.homeImage %>" height="25px" class="mx-auto d-block">
+                                </div>
+                                <div class="col-sm">
+                                </div>
+                                <div class="col-sm">
+                                    <img src="<%= el.awayImage %>" height="25px" class="mx-auto d-block">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
     </div>
 
     <div class="my-6"></div>

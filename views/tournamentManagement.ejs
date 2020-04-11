@@ -30,7 +30,7 @@
             <% data.forEach(function(el) { %>
             <tr id="row<%= el.id %>">
                 <td class="align-middle">
-                    <img src="<%= el.homeImage %>" width="200px" class="mx-auto d-block">
+                    <img src="<%= el.homeImage %>" width="100px" class="mx-auto d-block">
                 </td>
                 <td>
                     <div class="card text-center">
@@ -106,13 +106,13 @@
                     </div>
                 </td>
                 <td class="align-middle">
-                    <img src="<%= el.awayImage %>" width="200px" class="mx-auto d-block">
+                    <img src="<%= el.awayImage %>" width="100px" class="mx-auto d-block">
                 </td>
             </tr>
             <tr id="extra<%= el.id %>">
                 <td></td>
                 <td class="align-middle">
-                    <button class="btn btn-light col-md-8 offset-md-2" type="button" data-toggle="collapse"
+                    <button class="btn btn-light col-md-8 offset-md-2 bordercolor" type="button" data-toggle="collapse"
                         id="extraBtn<%= el.id %>" data-target="#collapse<%= el.id %>" aria-expanded="false"
                         aria-controls="collapse<%= el.id %>">
                         <span style="font-size: 1.5em; color: rgb(20, 36, 92);">
@@ -129,7 +129,8 @@
                                     <td>
                                     </td>
                                     <th scope="row">
-                                        <div id="scorePlayerName<%= el.id %><%= pl.name %>" class="mt-3 ml-2 mr-3"><strong><%= pl.name %></strong></div>
+                                        <div id="scorePlayerName<%= el.id %><%= pl.name %>" class="mt-3 ml-2 mr-3">
+                                            <strong><%= pl.name %></strong></div>
                                     </th>
                                     <td>
                                         <button type="button" id="scoreMinus<%= el.id %><%= pl.name %>"
