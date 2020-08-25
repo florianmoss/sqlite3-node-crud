@@ -7,6 +7,6 @@
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "express": "~4.16.0",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "https://github.com/mapbox/node-sqlite3/tarball/master"
   }
 }
