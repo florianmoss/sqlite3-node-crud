@@ -2,7 +2,13 @@
   "name": "backend",
   "version": "0.0.1",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florianmoss/sqlite3-node-crud.git"
+  },
   "dependencies": {
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
